@@ -6,20 +6,17 @@ use serenity::{
 };
 
 #[command]
-#[aliases("browser", "google")]
-#[description("Teaches users how to paste code neatly")]
+#[aliases("browser", "internet")]
+#[description("Reminds users that google is a thing")]
 #[usage("")]
 #[example = ""]
 #[help_available]
-#[bucket = "potentially_big_output"]
-pub(crate) async fn codeblock(ctx: &Context, msg: &Message) -> CommandResult {
-    if is_in_incorrect_channel(ctx, msg).await {
-        return Ok(());
-    }
+#[bucket = "potentially_big_output_ever_channel"]
+pub(crate) async fn google(ctx: &Context, msg: &Message) -> CommandResult {
     msg.channel_id
         .say(
             &ctx.http,
-"Looks like something <https://www.google.com/> would know!",
+            "Looks like something <https://www.google.com/> would know!",
         )
         .await?;
     Ok(())
